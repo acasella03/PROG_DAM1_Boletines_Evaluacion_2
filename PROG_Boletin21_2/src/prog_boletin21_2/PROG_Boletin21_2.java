@@ -1,5 +1,5 @@
-/*
-Carga un array  de tipo int, cas notas no módulo de programación ,dos 30 alumnos da clase de DAM .
+/* Boletin 21:
+1. Carga un array  de tipo int, cas notas no módulo de programación ,dos 30 alumnos da clase de DAM .
     •  Visualiza o numero de aprobados e o de suspensos  .
     •  Calcula e visualiza a nota media da clase
     • Visualiza a nota mais alta .
