@@ -1,4 +1,5 @@
-/*Realiza un programa que cree un array chamado “numeros” con 6 numeros 
+/*Boletin 21:
+1. Realiza un programa que cree un array chamado “numeros” con 6 numeros 
 aleatorios dun rango de 1 a 50 .Seguidamente visualiza o array o revés 
 ( 0 primeiro elemento visualizaráse  o último e asi sucesivamente )
 */
