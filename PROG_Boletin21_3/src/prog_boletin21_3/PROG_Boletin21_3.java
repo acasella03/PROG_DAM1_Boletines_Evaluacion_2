@@ -1,5 +1,5 @@
-/*
-Modifica o programa anterior e engadelle un array cos nomes dos alumnos 
+/* Boletin 21:
+3. Modifica o programa anterior e engadelle un array cos nomes dos alumnos 
     • Visualiza a nota dun alumno determinado
     • Visualiza unha lista co nome dos alumnos aprobados.
     • Fai unha lista ordenada por orden crecente de notas
