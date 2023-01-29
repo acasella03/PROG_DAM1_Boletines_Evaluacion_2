@@ -4,70 +4,91 @@ import com.angi.datos.PedirDatos;
 import java.util.Arrays;
 
 public class Notas {
-    int[] notas = new int[3];
-    String[] alumnos=new String[3];
-    
+
+    int[] notas = new int[30];
+    String[] alumnos = new String[30];
+
     public void crearArrayInt() {
         for (int i = 0; i < notas.length; i++) {
-            notas[i] = PedirDatos.pedirEntero("Ecribe la nota del alumno: ");
-            alumnos[i]= PedirDatos.pedirDatos("Escribe nombre del alumno: ");
+            alumnos[i] = PedirDatos.pedirDatos("Escribe nombre del alumno: ");
+            notas[i] = PedirDatos.pedirEntero("Ecribe la nota del alumno");
         }
     }
-    
-    public void buscarAlumno(float[] alumnos) {
-        int encontrado = 0; //no se encuentra el elemento
-        String alumnoBuscar = PedirDatos.pedirDatos("Escribe nombre del alumno");
+
+    public int buscarAlumno(String alumnoBuscar) {
         for (int i = 0; i < alumnos.length; i++) {
-            if (alumnoBuscar == alumnos[i]) {
-                System.out.println("El alumno está en la posición " + (i + 1));
-                encontrado = 1;
-                break;
+            if (alumnoBuscar.equals(alumnos[i])) {
+                return i;
             }
         }
-        if (encontrado == 0) {
-            System.out.println("El alumno no está en la lista");
-        }
+        return -1;
     }
-    
-    public void mostrarArray(int[] notas) {
-        int numAprobados=0;
-        int numSuspensos=0;
+
+    public void imprimirNotaDeUnAlumno(String alumnoBuscar) {
+        for (int i = 0; i < alumnos.length; i++) {
+            if (alumnoBuscar.equals(alumnos[i])) {
+                System.out.println("La nota de " + alumnos[i] + " es: " + notas[i]);
+                return;
+            }
+        }
+        System.out.println("El alumno no existe");
+    }
+
+    public void mostrarNumeroAprobadosSupensos(int[] notas) {
+        int numAprobados = 0;
+        int numSuspensos = 0;
         for (int i = 0; i < notas.length; i++) {
-            if (notas[i]>=5){
-                numAprobados=numAprobados+1;
-            }else{
-                numSuspensos=numSuspensos+1;
+            if (notas[i] >= 5) {
+                numAprobados = numAprobados + 1;
+            } else {
+                numSuspensos = numSuspensos + 1;
             }
-        
+
         }
-               
-        System.out.println("Los aprobados son: "+numAprobados);
-        System.out.println("Los suspensos son: "+numSuspensos);
+
+        System.out.println("Los aprobados son: " + numAprobados);
+        System.out.println("Los suspensos son: " + numSuspensos);
     }
-    
+
+    public void mostrarNombresAprobados() {
+        for (int i = 0; i < notas.length; i++) {
+            if (notas[i] >= 5) {
+                System.out.println(alumnos[i] + " está aprobado");
+                //System.out.println(String.format("%s está aprobado", alumnos[i]));
+            }
+        }
+    }
+
     public void mostrarMedia(int[] notas) {
-        int contadorAprobado=0;
-        int contadorSuspenso=0;
+        int contadorAprobado = 0;
+        int contadorSuspenso = 0;
         for (int i = 0; i < notas.length; i++) {
-            if (notas[i]>=5){
-                contadorAprobado=contadorAprobado+notas[i]; //para sacar la media
-            }else{
-                contadorSuspenso=contadorSuspenso+notas[i];
+            if (notas[i] >= 5) {
+                contadorAprobado = contadorAprobado + notas[i]; //para sacar la media
+            } else {
+                contadorSuspenso = contadorSuspenso + notas[i];
             }
-        
+
         }
-        int media= (contadorAprobado+contadorSuspenso)/notas.length;
-                
-        System.out.println("La media de la clase es: "+media);
+        int media = (contadorAprobado + contadorSuspenso) / notas.length;
+
+        System.out.println("La media de la clase es: " + media);
     }
-    
-    public void notaMasAlta(int[] notas){
-        int notaMayor=0;
-        for (int i = 0; i < notas.length; i++){
-            if(notaMayor<notas[i]){
-                notaMayor=notas[i];                
+
+    public void notaMasAlta(int[] notas) {
+        int notaMayor = 0;
+        for (int i = 0; i < notas.length; i++) {
+            if (notaMayor < notas[i]) {
+                notaMayor = notas[i];
             }
         }
-        System.out.println("La nota mayor es: "+notaMayor);
+        System.out.println("La nota mayor es: " + notaMayor);
+    }
+
+    public void ordenarNotas() {
+        Arrays.sort(notas);
+        for (int i = 0; i < notas.length; i++) {
+            System.out.println(+notas[i]);
+        }
     }
 }
