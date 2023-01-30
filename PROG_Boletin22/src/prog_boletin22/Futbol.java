@@ -1,34 +1,36 @@
 package prog_boletin22;
 
-import com.angi.datos.PedirDatos;
+import java.util.Arrays;
 
 public class Futbol {
-    private String nombreEquipo;
-    private int gol;
+    private Equipo[] equipos= new Equipo[3];
 
-    public int[][] crear() {
-        int[][] goles = new int[2][3];
-        for (int i = 0; i < 2; i++) {
-            String []nombreEquipo={new String ("celta"), new String ("bilbao")};
-            for (int j = 0; j < 3; j++) {
-                goles[i][j] = PedirDatos.pedirEntero("Teclea goles: ");
-                
-            }
+    public void setEquipos(Equipo[] equipos) {
+        this.equipos = equipos;
+    }
 
-        }
-        return goles;
+    @Override
+    public String toString() {
+        return "Futbol{" + "equipos=" + Arrays.toString(equipos) + '}';
     }
     
-    public void ver(int[][] goles) {
-        
-        for (int i = 0; i < goles.length; i++) {
-            System.out.print("|");  //para la estética
-            System.out.println(String []nombreEquipo);
-            for (int j = 0; j < goles[i].length; j++) {
-                System.out.print(goles[i][j] + "  ");
-
+    public void mostrarTabla(){
+        System.out.print("Equipo/jornada		");
+        for (int i = 0; i < equipos[0].getGoles().length; i++) {
+            System.out.print("X"+(i+1)+"	");
+            
+        }
+        System.out.println();
+        for (int i = 0; i < equipos.length; i++) {
+            System.out.print(equipos[i].getNombreEquipo());
+            System.out.print("			");
+            //System.out.println(Arrays.toString(equipos[i].getGoles()));
+            for (int j = 0; j < equipos[i].getGoles().length; j++) {
+                System.out.print(equipos[i].getGoles()[j]);
+                System.out.print("	");
             }
-            System.out.print("|\n");    //para la estética
+            System.out.println();
         }
     }
+    
 }

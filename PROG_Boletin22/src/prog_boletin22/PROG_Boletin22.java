@@ -23,11 +23,19 @@ package prog_boletin22;
 public class PROG_Boletin22 {
 
     public static void main(String[] args) {
-        Futbol gol=new Futbol();
-        int [][] aux;
-        aux=gol.crear();
-        
-        gol.ver(aux);
+        Equipo celta = new Equipo("Celta");
+        celta.setGoles(new int[]{3, 4, 2});
+        //System.out.println(celta.toString());
+
+        Futbol futbol = new Futbol();
+        futbol.setEquipos(new Equipo[]{
+            celta, 
+            new Equipo("Bilbao", new int[]{1, 2, 1}),
+            new Equipo("Málaga", new int[]{3, 0, 1}),
+        });
+        //System.out.println(futbol.toString());
+
+        futbol.mostrarTabla();
     }
-    
+
 }
