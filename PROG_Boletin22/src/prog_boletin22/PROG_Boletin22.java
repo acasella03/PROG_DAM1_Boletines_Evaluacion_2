@@ -3,8 +3,8 @@ A seguinte táboa recolle lós goles marcados polos 20 equipos de 1ª  división
 
         Equipo/xornada    X1   X2     X3 ……
         Celta              3    4      2
-        Bilbao             1    2      1 
-        Malaga             3    0      1
+        Bilbao             1    2      3 
+        Malaga             5    0      2
 
 Pídese: 
     1- Gravar e imprimir a táboa. 
@@ -30,12 +30,16 @@ public class PROG_Boletin22 {
         Futbol futbol = new Futbol();
         futbol.setEquipos(new Equipo[]{
             celta, 
-            new Equipo("Bilbao", new int[]{1, 2, 1}),
-            new Equipo("Málaga", new int[]{3, 0, 1}),
+            new Equipo("Bilbao", new int[]{1, 2, 3}),
+            new Equipo("Málaga", new int[]{5, 0, 2}),
         });
         //System.out.println(futbol.toString());
 
         futbol.mostrarTabla();
+        
+        futbol.listaOrdenadaAscendente();
+        
+        futbol.equipoConMasGolesPorJornada();
     }
 
 }
