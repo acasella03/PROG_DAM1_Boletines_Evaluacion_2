@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 public class Notas {
 
-    int[] notas = new int[30];
-    String[] alumnos = new String[30];
+    int[] notas = new int[3];
+    String[] alumnos = new String[3];
 
     public void crearArrayInt() {
         for (int i = 0; i < notas.length; i++) {
@@ -86,9 +86,21 @@ public class Notas {
     }
 
     public void ordenarNotas() {
-        Arrays.sort(notas);
+        int aux = 0;
+        String auxNombre;
+
         for (int i = 0; i < notas.length; i++) {
-            System.out.println(+notas[i]);
+            for (int j = i; j < notas.length; j++) {
+                if (notas[i] < notas[j]) {
+                    aux = notas[i];
+                    notas[i] = notas[j];
+                    notas[j] = aux;
+                    auxNombre = alumnos[i];
+                    alumnos[i] = alumnos[j];
+                    alumnos[j] = auxNombre;
+                }
+            }
+            System.out.println(alumnos[i] + " "+notas[i]);
         }
     }
 }

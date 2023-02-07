@@ -22,10 +22,9 @@ public class PROG_Boletin21_3 {
         } else {
             String nombreAlumno = notalum.alumnos[indiceAlumno];
             int notaAlumno = notalum.notas[indiceAlumno];
-            System.out.println("La nota de "+nombreAlumno+" es: "+notaAlumno);
+            System.out.println("La nota de " + nombreAlumno + " es: " + notaAlumno);
         }
-        
-        
+
         /*
         int indiceAlumno=ArrayUtils.buscar(notalum.alumnos, alumnoBuscar);
         if (indiceAlumno < 0) {
@@ -35,12 +34,11 @@ public class PROG_Boletin21_3 {
             int notaAlumno = notalum.notas[indiceAlumno];
             System.out.println("La nota de "+nombreAlumno+" es: "+notaAlumno);
         }*/
-        
         notalum.mostrarNombresAprobados();
-        
+
         System.out.println("Notas ordenadas:");
         notalum.ordenarNotas();
-        
+
         String alumnoBuscar = PedirDatos.pedirDatos("Escribe nombre del alumno a buscar");
         notalum.imprimirNotaDeUnAlumno(alumnoBuscar);
 
