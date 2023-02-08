@@ -51,11 +51,12 @@ public class Metodos {
 
     public void ordenar(ArrayList<Libro> lista) {
         Collections.sort(lista);
+        System.out.println("Lista ordenada");
     }
     
     public void mostrar(ArrayList<Libro> lista) {
-        //la primera forma de mostrar es simplemente con un sout
-        System.out.println(lista);
+        for(Libro elemento:lista)
+            System.out.println(elemento);
     }
 
     public void borrarLibroPorUnidad(ArrayList<Libro> lista) {
@@ -78,5 +79,23 @@ public class Metodos {
         if (encontrado == 0) {
             System.out.println("No hay libro con cero unidades");
         }
+    }
+    
+    public boolean buscarLibroDeterminado(ArrayList<Libro> lista) {
+
+        String tituloBuscar = PedirDatos.pedirDatos("Introduce el título del libro a buscar:");
+        boolean encontrado = false; //no se encontró
+
+        for (Libro elemento : lista) {
+            if (tituloBuscar.equalsIgnoreCase(elemento.getTitulo())) {
+                System.out.println(elemento.toString());
+                encontrado = true;
+            }
+        }
+        if (encontrado = false) {
+            System.out.println("Ese libro no esta en la librería");
+        }
+
+        return encontrado;
     }
 }
