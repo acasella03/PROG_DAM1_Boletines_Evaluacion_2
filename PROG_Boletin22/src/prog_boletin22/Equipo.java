@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Equipo {
 
     private String nombreEquipo;
-    private int[] goles = new int[3];
+    private int[] goles = new int[36];
     private int totalGoles;
 
     public Equipo(String nombreEquipo) {

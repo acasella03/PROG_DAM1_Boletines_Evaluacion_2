@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class Futbol {
 
-    private Equipo[] equipos = new Equipo[3];
+    private Equipo[] equipos = new Equipo[20];
 
     public void setEquipos(Equipo[] equipos) {
         this.equipos = equipos;
