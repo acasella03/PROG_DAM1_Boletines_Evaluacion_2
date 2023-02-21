@@ -1,5 +1,6 @@
 package prog_boletin22;
 
+import com.angi.datos.PedirDatos;
 import java.util.Arrays;
 
 public class Futbol {
@@ -21,6 +22,7 @@ public class Futbol {
             System.out.print("X" + (i + 1) + "	");
 
         }
+        System.out.print("Total Goles");
         System.out.println();
         for (int i = 0; i < equipos.length; i++) {
             System.out.print(equipos[i].getNombreEquipo());
@@ -69,4 +71,35 @@ public class Futbol {
         }
     }
 
+    public void equipoConMasGoles() {
+        int cantidadJornadas = equipos[0].getGoles().length;
+        String equipoGoleador = null;
+        int golMasAlto = -1;
+        int jornadaMasAlta=-1;
+        for (int i = 0; i < cantidadJornadas; i++) {
+            for (int j = 0; j < equipos.length; j++) {
+                int[] golesDelEquipo = equipos[j].getGoles();
+                int golesDelEquipoEnLaJornada = golesDelEquipo[i];
+                if (golesDelEquipoEnLaJornada > golMasAlto) {
+                    golMasAlto = golesDelEquipoEnLaJornada;
+                    equipoGoleador = equipos[j].getNombreEquipo();
+                    jornadaMasAlta=i+1;
+                }
+            }
+        }
+        System.out.println("El " + equipoGoleador + " ha hecho más goles con " + golMasAlto + " goles, en la jornada "+jornadaMasAlta);
+    }
+    
+    public void consultaEquipoJornada(){
+        String nombreEquipo=PedirDatos.pedirDatos("Escribe nombre del equipo");
+        int jornada=PedirDatos.pedirEntero("Escribe el número de la jornada");
+        for (int i = 0; i < equipos.length; i++) {
+            if(equipos[i].getNombreEquipo().equalsIgnoreCase(nombreEquipo)){
+                int[] jornadas=equipos[i].getGoles();
+                System.out.println("Los goles del "+nombreEquipo+" en la jornada "+jornada+" fueron: "+jornadas[jornada-1]);
+            }
+            
+        }
+        
+    }
 }

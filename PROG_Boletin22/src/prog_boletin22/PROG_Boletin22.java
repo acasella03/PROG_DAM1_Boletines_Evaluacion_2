@@ -40,6 +40,10 @@ public class PROG_Boletin22 {
         futbol.listaOrdenadaAscendente();
         
         futbol.equipoConMasGolesPorJornada();
+        
+        futbol.equipoConMasGoles();
+        
+        futbol.consultaEquipoJornada();
     }
 
 }

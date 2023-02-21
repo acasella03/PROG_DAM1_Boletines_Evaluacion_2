@@ -1,6 +1,5 @@
 package prog_boletin22;
 
-import com.angi.datos.PedirDatos;
 import java.util.Arrays;
 
 public class Equipo {
