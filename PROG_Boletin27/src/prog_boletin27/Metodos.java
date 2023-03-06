@@ -7,9 +7,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Metodos {
+
     FileWriter out = null;
     PrintWriter fich = null;
     Libros libro;
@@ -19,26 +21,53 @@ public class Metodos {
         try {
             out = new FileWriter(fichero);
             fich = new PrintWriter(out);
-            fich.println(new Libros(PedirDatos.pedirDatos("Escribe nombre del libro: "), PedirDatos.pedirDatos("Escribe el autor del libro: "),PedirDatos.pedirFloat("Escribe el precio del libro: "), PedirDatos.pedirEntero("Escribe las unidades existentes: ")));
+            fich.println(new Libros(PedirDatos.pedirDatos("Escribe nombre del libro: "), PedirDatos.pedirDatos("Escribe el autor del libro: "), PedirDatos.pedirFloat("Escribe el precio del libro: "), PedirDatos.pedirEntero("Escribe las unidades existentes: ")));
         } catch (IOException ex) {
             System.out.println("Error de escritura" + ex.getMessage());
         } finally {
             fich.close();
         }
     }
-    
+
     public void agregarPalabras(File fichero) {
         try {
-            out = new FileWriter(fichero,true);
+            out = new FileWriter(fichero, true);
             fich = new PrintWriter(out);
+            fich.println(new Libros(PedirDatos.pedirDatos("Escribe nombre del libro: "), PedirDatos.pedirDatos("Escribe el autor del libro: "), PedirDatos.pedirFloat("Escribe el precio del libro: "), PedirDatos.pedirEntero("Escribe las unidades existentes: ")));
         } catch (IOException ex) {
             System.out.println("Error de escritura" + ex.getMessage());
         } finally {
             fich.close();
         }
     }
+
+    public ArrayList<Libros> leerObjeto(File fichero) {
+        ArrayList<Libros> lista = new ArrayList<>();
+        String[] aux;
+        try {
+            sc = new Scanner(fichero);//abrir fichero
+            while (sc.hasNextLine()) { //leer fichero
+                aux = sc.nextLine().split(", ");
+                lista.add(new Libros(aux[0], aux[1], Float.parseFloat(aux[2]), Integer.parseInt(aux[3])));
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("No se puede leer el fichero");
+        } finally {
+            sc.close(); //cerramos fichero
+        }
+        return lista;
+    }
+
+    public Libros buscar(ArrayList<Libros> lista, String titulo) {
+        for (Libros lib : lista) {
+            if (titulo.equalsIgnoreCase(lib.getNombre())) {
+                return lib;
+            }
+        }
+        return null;
+    }
     
-    public void leerObjeto(File fichero) {
+    public ArrayList<Libros> mostrar(File fichero) {
         ArrayList<Libros> lista = new ArrayList<>();
         String[] aux;
         try {
@@ -52,9 +81,14 @@ public class Metodos {
         } finally {
             sc.close();
         }
-        for (Libros lib :lista) {
+        for (Libros lib : lista) {
             System.out.println(lib);
         }
+        return lista;
     }
     
+    public void borrar(ArrayList<Libros> lista){
+        Iterator<Libros> iterator = lista.iterator();
+        
+    }
 }
