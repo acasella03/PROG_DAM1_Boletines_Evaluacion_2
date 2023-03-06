@@ -14,10 +14,35 @@ Supoñer que queredes facer o mantemento dun ficheiro dunha librería .  Dos lib
 
 package prog_boletin27;
 
+import java.io.File;
+import javax.swing.JOptionPane;
+
 public class PROG_Boletin27 {
 
     public static void main(String[] args) {
-        
+        Metodos objeto = new Metodos();
+        File f=new File ("libreria.txt");
+        int opcion;
+        do {
+            opcion = Integer.parseInt(JOptionPane.showInputDialog("***MENU***\n1---> AÑADIR LIBRO \n2---> CONSULTAR \n3---> MOSTRAR \n4--->BORRAR \n5--->MODIFICAR \nTeclea opción"));
+            switch (opcion) {
+                case 1:
+                    objeto.escribirPalabras(f);
+                    break;
+                case 2:
+                    objeto.leerObjeto(f);
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    
+                    break;
+                case 5:
+                    
+            }
+
+        } while (opcion <= 5);
     }
     
 }

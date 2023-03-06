@@ -1,5 +1,6 @@
 package prog_boletin27;
 
+import com.angi.datos.PedirDatos;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -18,7 +19,7 @@ public class Metodos {
         try {
             out = new FileWriter(fichero);
             fich = new PrintWriter(out);
-            fich.println(new Libros("Peter Pan", "aaa",5.5f, 1));
+            fich.println(new Libros(PedirDatos.pedirDatos("Escribe nombre del libro: "), PedirDatos.pedirDatos("Escribe el autor del libro: "),PedirDatos.pedirFloat("Escribe el precio del libro: "), PedirDatos.pedirEntero("Escribe las unidades existentes: ")));
         } catch (IOException ex) {
             System.out.println("Error de escritura" + ex.getMessage());
         } finally {
@@ -39,20 +40,21 @@ public class Metodos {
     
     public void leerObjeto(File fichero) {
         ArrayList<Libros> lista = new ArrayList<>();
-        String[] aux = new String[2];
+        String[] aux;
         try {
             sc = new Scanner(fichero);
             while (sc.hasNextLine()) {
                 aux = sc.nextLine().split(", ");
-                lista.add(new Libros(aux[0], Integer.parseInt(aux[1])));
+                lista.add(new Libros(aux[0], aux[1], Float.parseFloat(aux[2]), Integer.parseInt(aux[3])));
             }
         } catch (FileNotFoundException ex) {
             System.out.println("No se puede leer el fichero");
         } finally {
             sc.close();
         }
-        for (Libros alum :lista) {
-            System.out.println(alum);
+        for (Libros lib :lista) {
+            System.out.println(lib);
         }
     }
+    
 }
