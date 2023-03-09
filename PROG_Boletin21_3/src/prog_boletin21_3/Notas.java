@@ -1,7 +1,6 @@
 package prog_boletin21_3;
 
 import com.angi.datos.PedirDatos;
-import java.util.Arrays;
 
 public class Notas {
 
