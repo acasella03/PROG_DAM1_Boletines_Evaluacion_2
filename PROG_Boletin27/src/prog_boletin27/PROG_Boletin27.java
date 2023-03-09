@@ -14,7 +14,6 @@ Supoñer que queredes facer o mantemento dun ficheiro dunha librería .  Dos lib
 
 package prog_boletin27;
 
-import com.angi.datos.PedirDatos;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -24,31 +23,33 @@ public class PROG_Boletin27 {
     public static void main(String[] args) {
         Metodos objeto = new Metodos();
         File f=new File ("libreria.txt");
+        ArrayList<Libros> lista=objeto.leerObjeto(f);
         int opcion;
         do {
-            opcion = Integer.parseInt(JOptionPane.showInputDialog("***MENU***\n1---> AÑADIR LIBRO \n2---> CONSULTAR \n3---> MOSTRAR \n4--->BORRAR \n5--->MODIFICAR \nTeclea opción"));
+            opcion = Integer.parseInt(JOptionPane.showInputDialog("***MENU***\n1---> AÑADIR LIBRO \n2---> CONSULTAR \n3---> MOSTRAR \n4--->BORRAR \n5--->MODIFICAR \n6--->SALIR \nTeclea opción"));
             switch (opcion) {
                 case 1:
                     objeto.agregarPalabras(f);
+                    lista=objeto.leerObjeto(f);
                     break;
                 case 2:
-                    ArrayList<Libros> lista=objeto.leerObjeto(f);
-                    String titulo = PedirDatos.pedirDatos("Escribe el titulo del libro: ");
-                    Libros libroEncontrado= objeto.buscar(lista, titulo);
-                    if(libroEncontrado==null){
-                        JOptionPane.showMessageDialog(null, "El libro no existe.");
-                    }else{
-                        JOptionPane.showMessageDialog(null, libroEncontrado.getPrecio());
-                    }
+                    objeto.buscarPorTitulo(lista);
                     break;
                 case 3:
-                    objeto.mostrar(f);
+                    objeto.mostrar(lista);
                     break;
                 case 4:
-                    
+                    ArrayList<Libros> filtrada=objeto.borrar(lista);
+                    objeto.reemplazarFichero(f, filtrada);
+                    lista=objeto.leerObjeto(f);
                     break;
                 case 5:
-                    
+                    objeto.modificarPrecio(lista);
+                    objeto.reemplazarFichero(f, lista);
+                    lista=objeto.leerObjeto(f);
+                    break;
+                default:
+                    break;       
             }
 
         } while (opcion <= 5);
